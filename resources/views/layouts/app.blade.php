@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title') - Fortify</title>
+    <!-- Tailwind CSS 4 Official CDN -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="bg-gray-50 min-h-screen p-4 font-sans">
+
+    <main class="flex-1 flex items-center justify-center p-4">
+        @yield('mainContent')
+    </main>
+
+    <footer class="py-4 text-center text-sm text-gray-500 border-t border-gray-200 bg-white dark">
+        &copy; {{ date('Y') }} Fortify Learning App - All rights reserved.
+    </footer>
+
+</body>
+
+</html>

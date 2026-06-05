@@ -1,0 +1,66 @@
+@extends('layouts.app')
+
+@section('title', 'Register')
+
+@section('mainContent')
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-xl border border-gray-100 p-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">অ্যাকাউন্ট
+                 তৈরি করুন</h1>
+            <p class="text-gray-500 mt-2 text-sm">Fortify এর সাথে আপনার যাত্রা শুরু করুন</p>
+        </div>
+
+        <!-- Form -->
+        <form action="/register" method="POST" class="space-y-5">
+            <!-- Laravel Blade ব্যবহার করলে নিচের লাইনটি আনকমেন্ট করবেন -->
+            <!-- @csrf -->
+
+            <!-- Name Field -->
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">পুরো নাম</label>
+                <input type="text" id="name" name="name" required placeholder="আপনার নাম লিখুন"
+                    class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200">
+            </div>
+
+            <!-- Email Field -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">ইমেইল অ্যাড্রেস</label>
+                <input type="email" id="email" name="email" required placeholder="example@mail.com"
+                    class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200">
+            </div>
+
+            <!-- Password Field -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">পাসওয়ার্ড</label>
+                <input type="password" id="password" name="password" required placeholder="••••••••"
+                    class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200">
+            </div>
+
+            <!-- Password Confirmation Field (Fortify ডিফল্টভাবে এটি চায়) -->
+            <div>
+                <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">পাসওয়ার্ড
+                    নিশ্চিত করুন</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" required
+                    placeholder="••••••••"
+                    class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
+                রেজিস্ট্রেশন করুন
+            </button>
+        </form>
+
+        <!-- Footer -->
+        <div class="mt-6 text-center">
+            <p class="text-sm text-gray-600">
+                ইতিমধ্যেই অ্যাকাউন্ট আছে?
+                <a href="/login"
+                    class="font-medium text-blue-600 hover:text-blue-500 hover:underline transition-colors">লগইন
+                    করুন</a>
+            </p>
+        </div>
+    </div>
+@endsection
