@@ -10,13 +10,13 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-50 min-h-screen p-4 font-sans">
+<body class="bg-gray-50 min-h-screen flex flex-col font-sans">
 
     <main class="flex-1 flex items-center justify-center p-4">
         @yield('mainContent')
     </main>
 
-    <footer class="py-4 text-center text-sm text-gray-500 border-t border-gray-200 bg-white dark">
+    <footer class="py-4 text-center text-sm text-gray-500 border-t border-gray-200 bg-white mt-auto">
         &copy; {{ date('Y') }} Fortify Learning App - All rights reserved.
     </footer>
 
