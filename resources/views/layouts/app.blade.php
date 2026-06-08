@@ -1,25 +1,25 @@
-<!DOCTYPE html>
-<html lang="bn">
+@extends('layouts.base')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - Fortify</title>
-    <!-- Tailwind CSS 4 Official CDN -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+@section('childContent')
 
-<body class="bg-gray-50 min-h-screen flex flex-col font-sans">
+    @include('layouts.partials.navbar')
 
-    <main class="flex-1 flex items-center justify-center p-4">
-        @yield('mainContent')
+    <main class="flex-1">
+        @yield('content')
     </main>
 
-    <footer class="py-4 text-center text-sm text-gray-500 border-t border-gray-200 bg-white mt-auto">
-        &copy; {{ date('Y') }} Fortify Learning App - All rights reserved.
-    </footer>
+    <script>
+        function toggleDropdown() {
+            document.getElementById('nav-dropdown').classList.toggle('hidden');
+        }
 
-</body>
-
-</html>
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+            const dropdown = document.getElementById('nav-dropdown');
+            const btn = e.target.closest('button[onclick="toggleDropdown()"]');
+            if (!btn && !dropdown.classList.contains('hidden')) {
+                dropdown.classList.add('hidden');
+            }
+        });
+    </script>
+@endsection
