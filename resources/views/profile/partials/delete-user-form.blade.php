@@ -7,7 +7,7 @@
         <hr class="border-gray-100 mb-5">
 
         {{-- Delete button — opens modal --}}
-        <button onclick="document.getElementById('delete-modal').classList.remove('hidden')"
+        <button onclick="showModal()"
             class="bg-white border border-red-400 text-red-600 text-sm font-medium px-4 py-2 rounded-lg hover:bg-red-50 transition">
             Delete Account
         </button>
@@ -15,7 +15,7 @@
 
     {{-- Modal --}}
     <div id="delete-modal"
-        class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm items-center justify-center z-50 p-4">
 
         <div class="bg-white rounded-xl border border-gray-200 w-full max-w-md shadow-2xl">
             <div class="p-6">
@@ -24,7 +24,7 @@
                     Please enter your password to confirm you would like to permanently delete your account.
                 </p>
 
-                <form method="POST" action="/profile/destroy">
+                <form method="POST" action="#">
                     @csrf
                     @method('DELETE')
 
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="flex justify-end gap-3">
-                        <button type="button" onclick="document.getElementById('delete-modal').classList.add('hidden')"
+                        <button type="button" onclick="hideModal()"
                             class="px-4 py-2 text-sm border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
                             Cancel
                         </button>
@@ -52,3 +52,35 @@
         </div>
     </div>
 </section>
+
+@push('scripts')
+    <script>
+        // Modal show function
+        function showModal() {
+            const modal = document.getElementById('delete-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        
+        // Modal hide function
+        function hideModal() {
+            const modal = document.getElementById('delete-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+        
+        // Optional: Close modal when clicking outside
+        document.getElementById('delete-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideModal();
+            }
+        });
+        
+        // Optional: Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideModal();
+            }
+        });
+    </script>
+@endpush
