@@ -12,4 +12,5 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/profile', [ProfileController::class, 'edit'])->middleware(['auth', 'verified'])->name('profile.edit');
+Route::delete('/profile/destroy', [ProfileController::class, 'destroy'])->middleware(['auth', 'verified'])->name('profile.destroy');
 

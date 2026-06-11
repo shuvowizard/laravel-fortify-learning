@@ -24,7 +24,7 @@
                     Please enter your password to confirm you would like to permanently delete your account.
                 </p>
 
-                <form method="POST" action="#">
+                <form method="POST" action="{{ route('profile.destroy') }}">
                     @csrf
                     @method('DELETE')
 
@@ -55,6 +55,12 @@
 
 @push('scripts')
     <script>
+        // Clear previous errors
+        function clearErrors() {
+            const errorMessages = document.querySelectorAll('.text-red-500');
+            errorMessages.forEach(el => el.remove());
+        }
+
         // Modal show function
         function showModal() {
             const modal = document.getElementById('delete-modal');
@@ -67,20 +73,31 @@
             const modal = document.getElementById('delete-modal');
             modal.classList.remove('flex');
             modal.classList.add('hidden');
+            clearErrors()
         }
         
         // Optional: Close modal when clicking outside
         document.getElementById('delete-modal').addEventListener('click', function(e) {
             if (e.target === this) {
                 hideModal();
-            }
+                clearErrors();
+            }            
         });
         
         // Optional: Close modal with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 hideModal();
+                clearErrors();
             }
         });
     </script>
+
+    @if($errors->any() && $errors->has('password'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                showModal();
+            });
+        </script>
+    @endif
 @endpush
