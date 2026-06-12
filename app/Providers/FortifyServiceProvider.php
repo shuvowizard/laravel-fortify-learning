@@ -21,12 +21,24 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Register view
         Fortify::registerView(function() {
             return view('auth.register');
         });
 
+        // Login view 
         Fortify::loginView(function() {
             return view('auth.login');
+        });
+
+        // Forgot password view
+        Fortify::requestPasswordResetLinkView(function() {
+            return view('auth.forgot-password');
+        });
+
+        // Reset password view
+        Fortify::resetPasswordView(function(Request $request) {
+            return view('auth.reset-password', ['request' => $request]);
         });
     }
 
